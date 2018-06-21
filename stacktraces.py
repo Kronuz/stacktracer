@@ -15,9 +15,7 @@ Usage:
     from stacktraces import StackTraces
     tracer = StackTraces('/tmp/stacktraces{ext}', traceback_interval=5, stats_interval=10)
     tracer.start()
-
-    ....
-
+    # Do something with multi-threading here...
     tracer.stop()
 """
 from __future__ import unicode_literals
