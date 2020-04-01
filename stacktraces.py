@@ -30,6 +30,7 @@ import time
 import atexit
 import platform
 import datetime
+import shutil
 import threading
 import traceback
 import collections
@@ -193,14 +194,14 @@ class StackTraces(threading.Thread):
                 filename, traceback = self._traceback()
                 with open(filename + '.tmp', 'w') as fout:
                     fout.write(traceback)
-                os.rename(filename + '.tmp', filename)
+                shutil.move(filename + '.tmp', filename)
 
         if stats:
             if self._stats_path is not None:
                 filename, stats = self._stats(True)
                 with open(filename + '.tmp', 'w') as fout:
                     fout.write(stats)
-                os.rename(filename + '.tmp', filename)
+                shutil.move(filename + '.tmp', filename)
 
     def _get_filename(self, path, pattern, ext):
         filename = os.path.join(path, pattern)
